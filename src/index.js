@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './localization/i18n';
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { ThemeProvider } from '@material-ui/core/styles';
 import store from './redux/store';
+import theme from './theme';
 
 ReactDOM.render(
   <Provider store={store}>
     {/* <React.StrictMode> */}
-      <App />
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </I18nextProvider>
     {/* </React.StrictMode> */}
   </Provider>,
   document.getElementById('root')

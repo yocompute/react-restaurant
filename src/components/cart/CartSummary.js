@@ -32,6 +32,8 @@ export const CartSummary = ({ cart }) => {
         cart.items.forEach(it => {
             subTotal += it.subTotal;
         });
+
+        subTotal = Math.round(subTotal * 100) / 100;
         return {subTotal, tax: (subTotal* 0.13).toFixed(2), total: (subTotal * 1.13).toFixed(2)};
     }else{
         return {subTotal:0, tax:0, total: 0};
